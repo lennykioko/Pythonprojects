@@ -21,4 +21,4 @@ def fullContactCollect(email):
 		webbrowser.open(photo_url)
 		x += 1
 #enter the target's email below
-fullContactCollect('accountname@example.com')
+fullContactCollect('example@gmail.com')
