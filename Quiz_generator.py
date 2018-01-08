@@ -85,4 +85,3 @@ for exnum in range(2):
 
 	examfile.close()
 	answerfile.close()
-

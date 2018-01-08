@@ -11,30 +11,30 @@ import twitter
 from watson_developer_cloud import PersonalityInsightsV2 as PersonalityInsights
 
 def analyze(handle):
-  #get the details from your bluemix account
-  twitter_consumer_key = ' ' 
-  twitter_consumer_secret = ' '  
-  twitter_access_token = ' '
-  twitter_access_secret = ' '
+    #get the details from your bluemix account
+    twitter_consumer_key = ' ' 
+    twitter_consumer_secret = ' '  
+    twitter_access_token = ' '
+    twitter_access_secret = ' '
 
-  twitter_api = twitter.Api(consumer_key =twitter_consumer_key, consumer_secret =  twitter_consumer_secret,
-           access_token_key = twitter_access_token, access_token_secret =  twitter_access_secret)
+    twitter_api = twitter.Api(consumer_key =twitter_consumer_key, consumer_secret =  twitter_consumer_secret,
+            access_token_key = twitter_access_token, access_token_secret =  twitter_access_secret)
 
-  statuses = twitter_api.GetUserTimeline(screen_name = handle, count = 200, include_rts = False)
+    statuses = twitter_api.GetUserTimeline(screen_name = handle, count = 200, include_rts = False)
 
-  text = ""
+    text = ""
 
-  for status in statuses:
+    for status in statuses:
     if (status.lang =='en'):
-      text +=status.text.encode('utf-8')
-    
+        text +=status.text.encode('utf-8')
 
-  pi_username = ' '
-  pi_password = ' '
+    pi_username = ' '
+    pi_password = ' '
 
-  personality_insights =  PersonalityInsights(username = pi_username  , password = pi_password )
-  pi_result = personality_insights.profile(text)
-  return pi_result
+    personality_insights =  PersonalityInsights(username = pi_username  , password = pi_password )
+    pi_result = personality_insights.profile(text)
+    return pi_result
+
 
 def flatten(orig):
     data = {}
@@ -49,17 +49,18 @@ def flatten(orig):
                                     data[c4['id']] = c4['percentage']
                                     if 'children' not in c3:
                                         if (c3['category'] == 'personality'):
-                                                data[c3['id']] = c3['percentage']
+                                            data[c3['id']] = c3['percentage']
     return data
-  
+
 def compare(dict1, dict2):
     compared_data = {}
     for keys in dict1:
         if dict1[keys] != dict2[keys]:
-                compared_data[keys]=abs(dict1[keys] - dict2[keys])
+            compared_data[keys] = abs(dict1[keys] - dict2[keys])
     return compared_data
-  
-#enter the two twitter accounts you wish to compare (do not forget to include the @) 
+
+
+# enter the two twitter accounts you wish to compare (do not forget to include the @) 
 user_handle = " "        
 celebrity_handle = " "
 
@@ -74,9 +75,9 @@ compared_results = compare(user,celebrity)
 sorted_result = sorted(compared_results.items(), key=operator.itemgetter(1))
 
 for keys, value in sorted_result[:5]:
-    print keys,
+    print (keys),
     print(user[keys]),
-    print ('->'),
-    print (celebrity[keys]),
-    print ('->'),
-    print (compared_results[keys])
+    print('->'),
+    print(celebrity[keys]),
+    print('->'),
+    print(compared_results[keys])
