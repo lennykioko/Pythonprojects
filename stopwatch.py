@@ -1,6 +1,7 @@
 #! python3
 # stopwatch.py - A simple stopwatch program.
 import time
+
 # Display the program's instructions.
 print('''Press ENTER to begin. Afterwards, press ENTER to "click" the stopwatch.
 Press Ctrl-C to quit.''')
@@ -23,4 +24,3 @@ try:
 except KeyboardInterrupt:
     # Handle the Ctrl-C exception to keep its error message from displaying.
     print('\n Done')
-

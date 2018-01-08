@@ -15,6 +15,6 @@ def notify(message):
  	client.messages.create(to=my_cell, from_=my_twilio, body=message)
 
 
-#just add this to the program you need to be notified once it finishes running
-#import Notification
-#Notification.notify('The boring task is finished.')   
+# just add this to the program you need to be notified once it finishes running
+# import Notification
+# Notification.notify('The boring task is finished.')   

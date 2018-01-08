@@ -1,12 +1,13 @@
 from random import randint
 
 random_numbers = []
-#you can change the number of numbers a participant needs to give below
+
+# you can change the number of numbers a participant needs to give below
 for i in range(0,3):
   randnum = randint(1,9)
   random_numbers.append(randnum)
   
-#this line is for debugging and should be removed once verything is up and running
+# this line is for debugging and should be removed once everything is up and running
 print(random_numbers)
 
 print('choose 3 numbers between zero  and ten, you have 2 chances' )
@@ -14,6 +15,7 @@ print('choose 3 numbers between zero  and ten, you have 2 chances' )
 print()
 
 chances = 2
+
 while chances > 0:
   response = []
   for i in range(3):

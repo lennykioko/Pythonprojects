@@ -1,5 +1,6 @@
 import smtplib
 
+# gmail server configuration
 smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
 smtpserver.ehlo()
 smtpserver.starttls()
