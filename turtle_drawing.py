@@ -5,8 +5,9 @@ def draw_shapes():
     draw = turtle.Turtle()
     draw.shape("turtle")
     draw.color("yellow")
-    draw.speed(2)
- 
+    draw.speed(5)
+
+
     rotate = 0
     while rotate <= 40:
         draw.right(10)
