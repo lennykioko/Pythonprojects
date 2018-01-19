@@ -1,4 +1,4 @@
-"""sadly workds in mac only for now because windows does not suooort curses, will  sort this out soon"""
+"""sadly works in mac only for now because windows does not suppsort curses, will  sort this out soon"""
 import random
 import curses
 
